@@ -23,7 +23,7 @@ pipeline {
                    //withCredentials([string(credentialsId: 'dockerhub-pwd', variable: 'dockerhubpwd')]) {
                    sh 'docker login -u abhikushali -p Welcometoisl@2024'
 
-}
+//}
                    sh 'docker push abhikushali/devops-integration'
                 }
             }
