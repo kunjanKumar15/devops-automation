@@ -2,7 +2,6 @@ pipeline {
     agent any
     tools{
         maven 'maven_3_9_6'
-        JAVA_HOME 'idk-9.0'
     }
     stages{
         stage('Build Maven'){
