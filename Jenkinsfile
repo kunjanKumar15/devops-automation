@@ -2,6 +2,7 @@ pipeline {
     agent any
     tools{
         maven 'maven_3_9_6'
+        JAVA_HOME 'idk-9.0'
     }
     stages{
         stage('Build Maven'){
@@ -13,7 +14,7 @@ pipeline {
         stage('Build docker image'){
             steps{
                 script{
-                    sh 'docker build -t javatechie/devops-integration .'
+                    sh 'podman build -t javatechie/devops-integration .'
                 }
             }
         }
@@ -21,14 +22,14 @@ pipeline {
             steps{
                 script{
                    withCredentials([string(credentialsId: 'dockerhub-pwd', variable: 'dockerhubpwd')]) {
-                   sh 'docker login -u javatechie -p ${dockerhubpwd}'
+                   sh 'podman login -u javatechie -p ${dockerhubpwd}'
 
 }
-                   sh 'docker push javatechie/devops-integration'
+                   sh 'podman push javatechie/devops-integration'
                 }
             }
         }
-        stage('Deploy to k8s'){
+        stage('podman to k8s'){
             steps{
                 script{
                     kubernetesDeploy (configs: 'deploymentservice.yaml',kubeconfigId: 'k8sconfigpwd')
