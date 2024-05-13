@@ -13,7 +13,7 @@ pipeline {
         stage('Build docker image'){
             steps{
                 script{
-                    sh 'podman build -t javatechie/devops-integration .'
+                    sh 'docker build -t javatechie/devops-integration .'
                 }
             }
         }
@@ -21,14 +21,14 @@ pipeline {
             steps{
                 script{
                    withCredentials([string(credentialsId: 'dockerhub-pwd', variable: 'dockerhubpwd')]) {
-                   sh 'podman login -u javatechie -p ${dockerhubpwd}'
+                   sh 'docker login -u javatechie -p ${dockerhubpwd}'
 
 }
-                   sh 'podman push javatechie/devops-integration'
+                   sh 'docker push javatechie/devops-integration'
                 }
             }
         }
-        stage('podman to k8s'){
+        stage('docker to k8s'){
             steps{
                 script{
                     kubernetesDeploy (configs: 'deploymentservice.yaml',kubeconfigId: 'k8sconfigpwd')
