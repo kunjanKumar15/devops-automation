@@ -31,6 +31,8 @@ pipeline {
         stage('docker to k8s'){
             steps{
                 script{
+                  sh 'ls /opt/homebrew/bin/ | grep oc'
+                  sh 'cd /opt/homebrew/bin'
                   sh  'oc login --token=sha256~3upv90iLhBpXlEAJSHortQLddHysDSpcG0XHKImQosE --server=https://api.sec-patch.cp.fyre.ibm.com:6443'
                     kubernetesDeploy (configs: 'deploymentservice.yaml',kubeconfigId: 'k8sconfigpwd')
                 }
