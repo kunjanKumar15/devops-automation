@@ -10,14 +10,15 @@ pipeline {
                 bat 'mvn clean install'
             }
         }
-/*        stage('Build docker image'){
+       stage('Build docker image'){
             steps{
                 script{
-                    sh 'docker build -t abhikushali/devops-integration .'
+                    sh 'docker build -t KunjanDockerTest-1/devops-integration .'
                 }
-            }
+            } 
+            
         }
-        stage('Push image to Hub'){
+  /*      stage('Push image to Hub'){
             steps{
                 script{
                    //withCredentials([string(credentialsId: 'dockerhub-pwd', variable: 'dockerhubpwd')]) {
