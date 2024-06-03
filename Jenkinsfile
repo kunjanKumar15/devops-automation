@@ -13,7 +13,7 @@ pipeline {
        stage('Build docker image'){
             steps{
                 script{
-                    sh 'docker build -t KunjanDockerTest-1/devops-integration .'
+                    bat 'docker build -t KunjanDockerTest-1/devops-integration .'
                 }
             } 
             
