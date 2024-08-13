@@ -1,36 +1,39 @@
 pipeline {
     agent any
-   // tools{
-    //    maven 'maven_3_9_6'
-    //}
+    tools{
+       maven 'maven_3_9_6'
+   }
     stages{
         stage('Build Maven'){
             steps{
-               // checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/kunjanKumar15/devops-automation.git']]])
-                //bat 'mvn clean install'
+                checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/kunjanKumar15/devops-automation.git']]])
+               sh 'mvn clean install'
                 echo "build stage"
             }
         }
        stage('Build docker image'){
             steps{
                 script{
-                    //bat 'docker build -t KunjanDockerTest-1/devops-integration .'
+                    sh 'docker build -t KunjanDockerTest-1/devops-integration .'
                     echo "build docker image"
+                    echo "sudo docker images"
                 }
             } 
             
         }
-  /*      stage('Push image to Hub'){
+        stage('Push image to Hub'){
             steps{
                 script{
                    //withCredentials([string(credentialsId: 'dockerhub-pwd', variable: 'dockerhubpwd')]) {
-                   sh 'docker login -u abhikushali -p Welcometoisl@2024'
-
-//}
-                   sh 'docker push abhikushali/devops-integration'
+                   //sh 'docker login -u abhikushali -p Welcometoisl@2024'
+                   //sh 'docker push KunjanDockerTest-1/devops-integration'
+                   echo "need to create docker hub account"
+                     }
+                   
                 }
             }
-        }
+      /*  }
+        
         stage('docker to k8s'){
             steps{
                 script{
