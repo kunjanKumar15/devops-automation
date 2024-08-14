@@ -25,9 +25,9 @@ pipeline {
             steps{
                 script{
                    //withCredentials([string(credentialsId: 'dockerhub-pwd', variable: 'dockerhubpwd')]) {
-                   //sh 'docker login -u abhikushali -p Welcometoisl@2024'
-                   //sh 'docker push KunjanDockerTest-1/devops-integration'
-                   echo "need to create docker hub account"
+                   sh 'docker login -u kunjan15 -p Hello@1234'
+                   sh 'docker push DockerImage-1/devops-integration'
+                   echo "Docker Image pushed on docker hub successfully"
                      }
                    
                 }
