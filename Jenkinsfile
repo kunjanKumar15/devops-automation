@@ -14,7 +14,7 @@ pipeline {
        stage('Build docker image'){
             steps{
                 script{
-                    sh 'docker build -t KunjanDockerTest-1/devops-integration .'
+                    sh 'docker build -t DockerImage-1/devops-integration .'
                     echo "build docker image"
                     echo "sudo docker images"
                 }
