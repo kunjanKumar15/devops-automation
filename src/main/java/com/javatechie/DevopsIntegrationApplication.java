@@ -11,7 +11,7 @@ public class DevopsIntegrationApplication {
 
 	@GetMapping
 	public String message(){
-		return "welcome to java saple application which is used to test the devops automation";
+		return "Welcome to my first change for DevOps Integration";
 	}
 
 	public static void main(String[] args) {
