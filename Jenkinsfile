@@ -29,6 +29,7 @@ pipeline {
                    sh 'docker tag DockerImage-1/devops-integration docker.io/kunjan15/dockerimage-1'
                    sh 'docker push kunjan15/dockerimage-1'
                    echo "Docker Image pushed on docker hub successfully"
+                   sh 'docker run -d -p 8081:8080 --name MyFirstApplication DockerImage-1/devops-integration'
                      }
                    
                 }
